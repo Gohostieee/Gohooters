@@ -1,0 +1,13 @@
+.gyro{
+  animation-name: example;
+  animation-duration: 1s;
+   animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0%   {  transform: scaleY(1);}
+
+  50%  { transform: scaleY(0);}
+  100%   { transform: scaleY(1);}
+
+}
