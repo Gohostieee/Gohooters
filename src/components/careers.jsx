@@ -71,7 +71,7 @@ export default class Careers extends Component {
 				return(
 					<>
 				<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh]  mt-16 mb-16">
-				<div class="flex flex-row justify-center mb-24 ">
+				<div class="flex flex-row justify-center mb-10 ">
 
 					<p class = "text-white text-4xl QuickSand mice careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
 					
@@ -84,7 +84,7 @@ export default class Careers extends Component {
 				</div>
 				</p>
 				
-				<div class="mt-24 left-4 relative bottom-0 flex flex-row" onClick={()=> this.goBack()}>
+				<div class="mt-16 left-4 relative bottom-0 flex flex-row" onClick={()=> this.goBack()}>
 
 				<p class = "text-white text-xl whitespace-nowrap option mt-2 QuickSand mice careerOpt w-[1vh] "onClick={()=> this.goBack()} optNum="1" id="selected">BACK</p>
 				</div>
