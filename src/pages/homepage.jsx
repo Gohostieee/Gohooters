@@ -1,5 +1,5 @@
-import "../styles/cyberpunk.scss"
-import "../styles/glitch.scss"
+import "../styles/cyberpunk.css"
+import "../styles/glitch.css"
 import "../styles/dimitri.css"
 import { Link } from "react-router-dom";
 import LainComp from "../images/171273.gif"

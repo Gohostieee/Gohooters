@@ -1,15 +1,15 @@
-import "../styles/cyberpunk.scss"
+import "../styles/cyberpunk.css"
 import "../styles/gyro.css"
 import "../styles/mice.css"
 import "../styles/quicksand.css"
-import "../styles/glitch.scss"
+import "../styles/glitch.css"
 import Careers from "../components/careers.jsx"
 import $ from "jquery"
 import {useEffect} from "react"
 
 
 export default function About(){
-	
+
 	return(
 		<div class="absolute overflow-hidden h-screen w-screen bg-black mice" data-theme="cyberpunk">
 			<h2 class="hero cyberpunk layers mt-8" data-text="EGO DEATH"><span>ABOUT</span></h2>
