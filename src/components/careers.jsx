@@ -5,63 +5,37 @@ import "../styles/mice.css"
 import "../styles/quicksand.css"
 import "../styles/glitch.scss"
 import careerJson from "../pages/json/careers.json"
+import Selector from "./Selector.jsx"
 import $ from "jquery"
 
 
 
 export default class Careers extends Component {
-	constructor(props){
-		super(props)
+	constructor(){
+		super()
 		this.state = {
 			count:0,
 			career:"h u fh"
 
 		}
+		this.currUrl=""
 		this.selectedOption = ""
-		this.options = {
-			"0": 
-				<>
-				<div class="flex flex-row justify-center ">
-						<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>
-
-						<p class = "text-white text-4xl QuickSand mice  careerOpt opt-1" optNum="1" onClick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
-
-					</div>
-					<div class="flex flex-row justify-center ">
-						<p class = "text-white text-4xl QuickSand careerOpt  opt-2" optNum="2"> DATA ENGINEER  </p>
-					</div>
-					<div class="flex flex-row justify-center ">
-						<p class = "text-white text-4xl QuickSand careerOpt opt-3" optNum="3">  FULLSTACK DEVELOPER  </p>
-					</div>
-					<div class="flex flex-row justify-center ">
-						<p class = "text-white text-4xl QuickSand careerOpt opt-4" optNum="4">  API DEVELOPER  </p>
-					</div>
-			</>
-			,
-			"1": 
-				<>
-				<div class="flex flex-row justify-center ">
-					<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>
-
-					<p class = "text-white text-4xl QuickSand mice  careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
-
-				</div>
-				<p>{careerJson[this.selectedOption]}</p>
-
-			</>
-			
-		}
+		
 	}
 
 
-	changeCareer(career){
-		this.state.career=career
-		this.selectedOption="college"
+	changeCareer(Career){
+		this.selectedOption=Career 
 
 		console.log(this.state.career)
-		this.setState({count:1},()=>{
+		this.setState({count:1,career:Career},()=>{
 
 		})
+	
+	}
+
+	goBack(){
+		this.setState({count:0})
 	}
 	funcfunc(){
 		switch(this.state.count){
@@ -69,42 +43,54 @@ export default class Careers extends Component {
 				return(
 					<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh] flex-col flex justify-between mt-16 mb-16">
 					
-					<div class="flex flex-row justify-center ">
-							<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>
+					<div class="flex flex-row justify-center " onClick={()=> this.changeCareer("COLLEGE PROFESSOR")}>
 
-							<p class = "text-white text-4xl QuickSand mice  careerOpt opt-1" optNum="1" onClick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
+							<p class = "text-white option text-4xl QuickSand mice  careerOpt opt-1" optNum="1" onclick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
 
 						</div>
-						<div class="flex flex-row justify-center ">
-							<p class = "text-white text-4xl QuickSand careerOpt  opt-2" optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
+						<div class="flex flex-row justify-center " onClick={()=> this.changeCareer("DATA ENGINEER")}>
+							<p class = "text-white option text-4xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
 						</div>
-						<div class="flex flex-row justify-center ">
-							<p class = "text-white text-4xl QuickSand careerOpt opt-3" optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
+						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")} >
+							<p class = "text-white option text-4xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
 						</div>
-						<div class="flex flex-row justify-center ">
-							<p class = "text-white text-4xl QuickSand careerOpt opt-4" optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
+						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("API ENGINEER")}>
+							<p class = "text-white option text-4xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
 						</div>
+					<Selector/>
+
 					</div>
+
 
 				)
 
 
 			break;
 			case 1:
-			console.log(this.selectedOption,"confusion")
+			
 				return(
 					<>
-				<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh] flex-col flex mt-16 mb-16">
-				
+				<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh]  mt-16 mb-16">
 				<div class="flex flex-row justify-center mb-24 ">
-					<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>
 
-					<p class = "text-white text-4xl QuickSand mice  careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
-
+					<p class = "text-white text-4xl QuickSand mice careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
+					
 				</div>
-				<p>{careerJson[this.selectedOption]}</p>
+				<p class="text-white text-xl ml-[20vh] mr-[20vh] p-8 text-justify border  QuickSand">{careerJson[this.selectedOption][0]}
+				<br/>
+				<br/>
+				<div class="flex-row flex justify-center mr-6" onClick={()=>{$("#careerUrl")[0].click()}}>
+				<a href={careerJson[this.selectedOption][1]} class="option text-white mt-2" target="_blank" id="careerUrl">{careerJson[this.selectedOption][1]}</a>
+				</div>
+				</p>
+				
+				<div class="mt-24 left-4 relative bottom-0 flex flex-row" onClick={()=> this.goBack()}>
 
+				<p class = "text-white text-xl whitespace-nowrap option mt-2 QuickSand mice careerOpt w-[1vh] "onClick={()=> this.goBack()} optNum="1" id="selected">BACK</p>
+				</div>
 			</div>
+				<Selector/>
+
 			</>
 			)
 
@@ -117,55 +103,8 @@ export default class Careers extends Component {
 	}
 
 	componentDidMount(){// WHY IS USEEFFECT RUNNING TWICE??? IT WORKED FINE BEFORE??? LIKE HUH????
-		console.log("whyyy")
-		const arrowhead = `<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>`
-		let optClick;
-		let optNum;
-		$(".careerOpt").hover(function (){
-			if($(this).attr("id")!="selected"){
-				$("#arrow").remove()
-				$("#selected").attr("id", "")
-				$(this).attr("id","selected")
-				$(this).parent().prepend(arrowhead)
-				console.log("maniac",$(this).text())
-			}
-		})
-		$(document).keydown(function(e){
-		    switch (e.which){
-		    case 37:    // key left, right, up, and down
-		       console.log("oop")
-		        break;
-		    case 39:    // key right
-		        console.log("oop")
-		        break;
-		    case 38:    // key up
-		      console.log("oop")
-		       	optNum = Number($("#selected").attr("optNum"))
-		       	if(optNum < 2){
-		       		optNum=5
-		       	}
-		       	$("#arrow").remove()
-				$("#selected").attr("id", "")
-				$(`p[optNum="${optNum-1}"]`).attr("id","selected")
-				$(`p[optNum="${optNum-1}"]`).parent().prepend(arrowhead)
-				console.log("maniac",`p[optNum="${optNum+1}"]`)
-		        break;
-		      break;
-		    case 40:    // key down
-		       	console.log("oop")
-
-		       	optNum = Number($("#selected").attr("optNum"))
-		       	if(optNum > 3){
-		       		optNum=0
-		       	}
-		       	$("#arrow").remove()
-				$("#selected").attr("id", "")
-				$(`p[optNum="${optNum+1}"]`).attr("id","selected")
-				$(`p[optNum="${optNum+1}"]`).parent().prepend(arrowhead)
-				console.log("maniac",`p[optNum="${optNum+1}"]`)
-		        break;
-		    }
-		});
+		
+			
 	}
 	
 	render() {

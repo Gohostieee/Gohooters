@@ -3,6 +3,7 @@ import './App.css';
 import Home from './pages/homepage.jsx'
 import About from './pages/about.jsx'
 import "./styles/mice.css"
+import Selector from "./components/Selector.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
        <Routes>
-        <Route path="/" element={<Home />} />
+        
+        <Route path="/" element={<><Home /> <Selector/></>} />
         <Route path="About" element={<About/>} />
       </Routes>
       </BrowserRouter>
