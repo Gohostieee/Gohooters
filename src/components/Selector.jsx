@@ -37,7 +37,7 @@ export default class Selector extends Component{
             case 13:
 
                  $(optList['optArr'][optList['currOpt']]).trigger("click")
-                 console.log("whtff",$(optList['optArr'][optList['currOpt']]))
+                 console.log("whtff!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!",$(optList['optArr'][optList['currOpt']]))
                 break;
             case 37:    // key left, right, up, and down
                console.log("oop")

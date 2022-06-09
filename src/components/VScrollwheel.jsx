@@ -1,6 +1,6 @@
 import {Component} from "react"
 import {Link} from "react-router-dom"
-
+import $ from "jquery"
 
 export default class VScrollwheel extends Component{
 	constructor(props){
@@ -20,11 +20,37 @@ export default class VScrollwheel extends Component{
 	}
 
 	componentDidMount(){
+		const prop = this
+		$(document).keydown(function (e){
+			
 
+
+
+
+
+			switch (e.which){
+
+           		case 13:
+
+                	$("#selector").trigger("click")
+	            	break;
+	            case 37:    // key left, right, up, and down
+	               console.log("oop")
+					if(prop.opts.length<= prop.state.currOpt+1){prop.setState({currOpt:0});return;}
+					prop.setState({currOpt:prop.state.currOpt+1})
+	                break;
+	            case 39:    // key right
+					if(0>prop.state.currOpt-1){prop.setState({currOpt:prop.opts.length-1});return;}
+					prop.setState({currOpt:prop.state.currOpt-1})
+
+	                console.log("oop")
+	                break;
+	            }
+		})
 
 	}
 	createOpt(opt){
-		return (<Link to= {`${opt[1]}`} ><p class = "text-white btn-primary btn-outline btn  text-3xl glitch border-b font-medium">{opt[0]}</p></Link>)
+		return (<Link to= {`${opt[1]}`} ><p id = "selector" class  = "text-white btn-primary btn-outline btn  text-3xl glitch border-b font-medium">{opt[0]}</p></Link>)
 	}
 
 	render(){
