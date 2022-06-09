@@ -15,7 +15,7 @@ export default function MainMenu(){
 	return(
 		<>
 			<div class=	"absolute overflow-hidden h-screen w-screen  bg-black" data-theme="cyberpunk">
-				<Swheel options={['what','mmm']}/>
+				<Swheel options={[['about','/about'],['entry','/']]}/>
 
 
 			</div>

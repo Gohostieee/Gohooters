@@ -24,18 +24,22 @@ export default class VScrollwheel extends Component{
 
 	}
 	createOpt(opt){
-		return (<Link to= {`/${opt}`} ><p class = "text-white text-3xl m-auto glitch underline underline-offset-4 font-medium">{opt}</p></Link>)
+		return (<Link to= {`${opt[1]}`} ><p class = "text-white btn-primary btn-outline btn  text-3xl glitch border-b font-medium">{opt[0]}</p></Link>)
 	}
 
 	render(){
-		return(
+		return(<div class="flex flex-row relative top-[80%] justify-center">
 
-<div class=" flex flex-row flex-nowrap relative overflow-hidden justify-center relative bottom-[-80vh] w-[40vh] m-auto border-x">
+<button class="btn option btn-outline btn-primary glitch w-[100px] mr-16 text-center text-3xl font-thin layers " data-text="LEFT">⇐</button>
+<div class=" flex flex-row relative text-center overflow-hidden justify-center min-w-[220px] w-[30%] border-x">
 					{this.opts[this.state.currOpt]}
 
 
 				</div>
+<button class="btn option btn-outline btn-primary glitch w-[100px] ml-16 text-center text-3xl font-thin layers " data-text="RIGHT">⇒</button>
 
+
+</div>
 			)
 	}
 
