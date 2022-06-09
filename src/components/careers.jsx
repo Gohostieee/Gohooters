@@ -6,6 +6,7 @@ import "../styles/quicksand.css"
 import "../styles/glitch.css"
 import careerJson from "../pages/json/careers.json"
 import Selector from "./Selector.jsx"
+import {Link} from "react-router-dom"
 import $ from "jquery"
 
 
@@ -41,21 +42,24 @@ export default class Careers extends Component {
 		switch(this.state.count){
 			case 0:
 				return(
-					<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh] flex-col flex justify-between mt-16 mb-16">
+					<div class="m-auto border-x-2 h-[60%] mt-12 w-[80%] flex-col flex justify-between mt-16 mb-16">
 					
 					<div class="flex flex-row justify-center " onClick={()=> this.changeCareer("COLLEGE PROFESSOR")}>
 
-							<p class = "text-white option text-4xl QuickSand mice  careerOpt opt-1" optNum="1" onclick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
+							<p class = "text-white option text-2xl QuickSand mice  careerOpt opt-1" optNum="1" onclick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
 
 						</div>
 						<div class="flex flex-row justify-center " onClick={()=> this.changeCareer("DATA ENGINEER")}>
-							<p class = "text-white option text-4xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
+							<p class = "text-white option text-2xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
 						</div>
 						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")} >
-							<p class = "text-white option text-4xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
+							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
 						</div>
 						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("API ENGINEER")}>
-							<p class = "text-white option text-4xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
+							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
+						</div>
+						<div class="flex flex-row justify-center " onClick={()=>{window.location.href="/mainmenu"}}>
+							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="4">  BACK  </p>
 						</div>
 					<Selector/>
 
@@ -70,13 +74,13 @@ export default class Careers extends Component {
 			
 				return(
 					<>
-				<div class="m-auto border-x-2 h-[70vh] mt-12 w-[130vh]  mt-16 mb-16">
+				<div class="m-auto border-x-2 h-[70%] mt-12 w-[80%]  mt-12 mb-12 overflow-y-visible">
 				<div class="flex flex-row justify-center mb-10 ">
 
-					<p class = "text-white text-4xl QuickSand mice careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
+					<p class = "text-white text-3xl QuickSand mice careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
 					
 				</div>
-				<p class="text-white text-xl ml-[20vh] mr-[20vh] p-8 text-justify border  QuickSand">{careerJson[this.selectedOption][0]}
+				<p class="text-white text-xl ml-[8vh] mr-[8vh] p-8 text-justify border  QuickSand">{careerJson[this.selectedOption][0]}
 				<br/>
 				<br/>
 				<div class="flex-row flex justify-center mr-6" onClick={()=>{$("#careerUrl")[0].click()}}>
