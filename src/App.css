@@ -2,7 +2,14 @@
   text-align: center;
   
 }
-
+.pixel {
+  image-rendering: pixelated !important;
+  image-rendering: -moz-crisp-edges !important;
+  image-rendering: crisp-edges !important;
+}
+html{
+  background-color: black !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,7 +22,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;

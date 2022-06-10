@@ -1,7 +1,8 @@
 import "../styles/cyberpunk.css"
 import Swheel from "../components/VScrollwheel.jsx"
 import "../styles/glitch.css"
-
+import computers from "../images/lain.gif"
+import goodBye from "../images/slowWindLain.gif"
 
 
 
@@ -15,7 +16,7 @@ export default function MainMenu(){
 	return(
 		<>
 			<div class=	"absolute overflow-hidden h-screen w-screen  bg-black" data-theme="cyberpunk">
-				<Swheel options={[['about','/about'],['entry','/']]}/>
+				<Swheel options={[['CAREER','/about',computers],['BACK','/',goodBye]]}/>
 
 
 			</div>
