@@ -74,7 +74,7 @@ export default class Careers extends Component {
 			
 				return(
 					<>
-				<div class="m-auto border-x-2 h-[70%] mt-12 w-[80%]  mt-12 mb-12 overflow-y-visible">
+						<div class="m-auto border-x-2 h-[70%] mt-12 w-[80%]  mt-12 mb-12 overflow-y-visible">
 				<div class="flex flex-row justify-center mb-10 ">
 
 					<p class = "text-white text-3xl QuickSand mice careerOpt opt-1" optNum="1" id="selected">{this.state.career}	</p>
