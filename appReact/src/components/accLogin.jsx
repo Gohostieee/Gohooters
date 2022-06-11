@@ -1,7 +1,7 @@
 import {Component} from "react"
 import $ from "jquery"
-
-
+import axios from "axios"
+const api = axios.create({baseURL:"http://localhost:3001/api/accounts"})
 export default class AccLogin extends Component{
 
 
@@ -34,10 +34,39 @@ export default class AccLogin extends Component{
 					</div>
 			)
 	}
-	handleInput(x){
-		console.log(x)
+
+
+	async handleInput(x){
 		if(x != this.state.request){
 			this.setState({request:x})
+			return;
+		}
+		switch(x){
+			case "login":
+
+
+			break;
+			case 'signup':
+				console.log(axios)
+
+				let res = await api.get("/",{request:'signup',password:"12345"}, {
+					crossorigin:true,
+      'Access-Control-Allow-Origin': true,
+      'Content-Type': 'application/json',
+    },)
+				console.log('what', res)
+				/*
+				axios.get('', {
+ 					request: 'signup',
+  					password: '12345',
+
+				},{'Access-Control-Allow-Credentials':true}).then((response) => {
+				  console.log(response,"what");
+				}, (error) => {
+				  console.log(error);
+				});
+				*/
+			break;
 		}
 	}
 	componentDidMount(){
