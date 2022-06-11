@@ -1,6 +1,8 @@
 import {Component} from "react"
 import $ from "jquery"
 import axios from "axios"
+import "../styles/quicksand.css"
+
 const api = axios.create({baseURL:"http://localhost:3001/api/accounts"})
 export default class AccLogin extends Component{
 
@@ -21,7 +23,8 @@ export default class AccLogin extends Component{
 					</>,
 
 				},
-			request:"signup"
+			request:"signup",
+			errors:""
 		}
 	}
 	createInput(x){
@@ -34,9 +37,22 @@ export default class AccLogin extends Component{
 					</div>
 			)
 	}
+	createError(x){
+		console.log("hm",x)
+		if(!x){return;}
+		return (
 
 
-	async handleInput(x){
+<>
+							<span class="text-red-500 text-l QuickSand tracking-[3px] text-thin underline underline-offset-4">{x}</span>
+
+  					</>
+			)
+
+	}
+
+	async handleInput(x,pass,user){
+		console.log("whatsd",pass)
 		if(x != this.state.request){
 			this.setState({request:x})
 			return;
@@ -47,14 +63,61 @@ export default class AccLogin extends Component{
 
 			break;
 			case 'signup':
-				console.log(axios)
 
-				let res = await api.get("/",{request:'signup',password:"12345"}, {
+				await api.get(`/?request=signup&password=${pass}&username=${user}`,{request:'signup',password:"12345"}, {
 					crossorigin:true,
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
-    },)
-				console.log('what', res)
+    },).then((e)=>{
+
+
+    	switch(e.data[0]['reason']){
+    		case 'passShort':
+    			this.setState({errors:this.createError('Your password is too short!')})
+
+    		break;
+    		case 'passNumbers':
+    			this.setState({errors:this.createError('Your password needs numbers!')})
+
+
+    		break
+    		case 'passCapital':
+    			this.setState({errors:this.createError('Your password needs capital letters!')})
+    		break
+    		case 'passLowercase':
+    			this.setState({errors:this.createError('Your password needs lowercase letters!')})
+    		break;
+    		case 'passSuccess':
+    			switch(e.data[1]['reason']){
+    				case 'userAlphaNum':
+    					this.setState({errors:this.createError('Your username cannot have special characters!')})
+    				break;
+    				case 'userLong':
+    					this.setState({errors:this.createError('Your username can only be ten characters long!')})
+
+
+    				break;
+    				case 'userShort':
+
+
+    					this.setState({errors:this.createError('Your username is empty!')})
+    				break;
+    				case "userSuccess":
+
+		    			this.setState({errors:""})
+
+    				break
+    				
+    			}
+    		break;
+    		default:
+		    	this.setState({errors:"Unknown error occurred?"})
+
+
+
+    		break
+    	}
+    })
 				/*
 				axios.get('', {
  					request: 'signup',
@@ -79,10 +142,11 @@ export default class AccLogin extends Component{
 				<div class="border-x mt-8 flex flex-col justify-c  w-[30%] m-auto mt-24 min-w-[350px]">
 					
 				{this.state.inputs[this.state.request]}
+				{this.state.errors}
 				</div>
 		      	<button onClick={() =>{this.handleInput('login')}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
 		      	<br/>
-				<button onClick={() =>{this.handleInput('signup')}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
+				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
 
 		      	</>
 			)
