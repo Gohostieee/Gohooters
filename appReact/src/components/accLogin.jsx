@@ -51,7 +51,7 @@ export default class AccLogin extends Component{
 
 	}
 
-	async handleInput(x,pass,user){
+	async handleInput(x,pass,user,email){
 		console.log("whatsd",pass)
 		if(x != this.state.request){
 			this.setState({request:x})
@@ -64,7 +64,7 @@ export default class AccLogin extends Component{
 			break;
 			case 'signup':
 
-				await api.get(`/?request=signup&password=${pass}&username=${user}`,{request:'signup',password:"12345"}, {
+				await api.get(`/?request=signup&password=${pass}&username=${user}&email=${email}`,{request:'signup',password:"12345"}, {
 					crossorigin:true,
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
@@ -103,8 +103,16 @@ export default class AccLogin extends Component{
     					this.setState({errors:this.createError('Your username is empty!')})
     				break;
     				case "userSuccess":
+    					switch(e.data[2]['reason']){
+    						case 'emailError':
+    							this.setState({errors:this.createError("Email isn't valid!")})
+    						break;
+    						case 'emailSuccess':
 
-		    			this.setState({errors:""})
+    							this.setState({errors:''})
+    							break;
+
+    					}
 
     				break
     				
@@ -146,7 +154,7 @@ export default class AccLogin extends Component{
 				</div>
 		      	<button onClick={() =>{this.handleInput('login')}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
 		      	<br/>
-				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
+				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val(),$("#email").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
 
 		      	</>
 			)
