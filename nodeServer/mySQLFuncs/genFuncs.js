@@ -1,3 +1,18 @@
+import {hash256} from '../genFuncs.js'
+let rep = {}
+
+
+export function login(user,pass,con,callback){
+	const cred = [hash256(user),hash256(pass)]
+	const query = con.format("select * from userLogins where name = ? and pass = ?", cred)
+	con.query(query,function(err,results){
+		if(err) throw err;
+		console.log(results)
+		if(results.length!=0){return callback(0)}
+		return callback(1)
+
+	})
+}
 function passCheck(pass) {
     console.log(pass.length)
 
@@ -40,31 +55,66 @@ function emailCheck(email){
 	}
 	return 0;
 }
-async function accValCheck(y,con,creds){
+async function accValCheck(y,con,creds,callback){
 	for(let x = 0;x<y.length;x++){
 		if(y[x]['error-code']===400){
-			return 1;
+			console.log("uwuuuu!")
+			return callback(1);
 		}
 
 
 				
 	}
+	console.log(creds)
 	const query = con.format("SELECT * FROM userLogins WHERE name = ? or email = ?",creds)
 	console.log(query)
-	await con.query(query, function(err,results){
+	let kys
+	con.query(query, function(err,results){
+		console.log(results.length, "niQQA")
+		if (err) throw err
 		if(results.length>0){
-			return 2
+			return callback(2)
 		}else{
-			return 0;
+			return callback(0);
 		}
 	});
 
 
-
 }
 
+function handler(response,con,req,callback){
 
-export function createAcc(req,con){
+	accValCheck(response,con,[hash256(req.query['username']),req.query['email']], function(result){
+		switch(result){
+				case 2:
+					response[3] = {"error-code":400,reason:"takenUser"}
+
+				break;
+
+				case 1: 
+
+					console.log("hm?")
+
+				break;
+
+				case 0:
+
+					response[3] = {"error-code":200,reason:"availableUser"}
+					const crd = [hash256(req.query['username']),hash256(req.query['password']),req.query['email']]
+					const query = con.format("INSERT INTO userLogins (name, pass, email) VALUES (? , ? , ?)",crd)
+					con.query(query)
+
+				break;
+				default:
+
+					console.log("is worse")
+
+				break;
+			}
+		return callback([response])
+	})
+}
+export async function createAcc(req,con,callback){
 	let response = []
 	switch(passCheck(req.query['password'])){
 				case 1:
@@ -120,8 +170,15 @@ export function createAcc(req,con){
 
  
 			}
-			if (!accValCheck(response,con,[req.query['username'],req.query['email']])){
-				con.query("INSERT INTO userLogins (name, pass, email) VALUES ?",req.query['username'],req.query['password'],req.query['email'])
-			}
-			return response
+			console.log(handler(response,con,req,callback))
+
+			
+
 }
+
+
+/* 
+
+
+
+*/

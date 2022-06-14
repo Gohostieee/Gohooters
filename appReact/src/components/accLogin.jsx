@@ -1,4 +1,5 @@
 import {Component} from "react"
+import sha256 from 'crypto-js/sha256.js';
 import $ from "jquery"
 import axios from "axios"
 import "../styles/quicksand.css"
@@ -59,7 +60,29 @@ export default class AccLogin extends Component{
 		}
 		switch(x){
 			case "login":
+				api.get(`/?request=login&password=${pass}&username=${user}`, {
+					crossorigin:true,
+      'Access-Control-Allow-Origin': true,
+      'Content-Type': 'application/json',
+    },).then((e)=>{
+    	console.log(e.data)
+    	switch(e.data['status']){
+    		case "approved":
+    			console.log('approved')
+    			localStorage.setItem("userInfo", {user,pass,email})
 
+		    	this.setState({errors:''})
+		    	window.location.href="/account"
+
+    		break;
+    		case "disapproved":
+
+    			this.setState({errors:this.createError('Username or password are wrong!')})
+
+
+    		break;
+    	}
+    })
 
 			break;
 			case 'signup':
@@ -69,8 +92,11 @@ export default class AccLogin extends Component{
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
     },).then((e)=>{
-
-
+    	console.log(e)
+// there are honestly soooo many switch statements here
+// I feel like I should switch it to something else and make it alot cleaner
+// but would it really be worth it? not that hard to wrap my head around
+// shall consult with other engineers on the matter
     	switch(e.data[0]['reason']){
     		case 'passShort':
     			this.setState({errors:this.createError('Your password is too short!')})
@@ -108,8 +134,24 @@ export default class AccLogin extends Component{
     							this.setState({errors:this.createError("Email isn't valid!")})
     						break;
     						case 'emailSuccess':
+    							console.log("uwu!")
+    							switch(e.data[3]['reason']){
 
-    							this.setState({errors:''})
+    								case 'availableUser':
+    							console.log("uwo!")
+    									localStorage.setItem("userInfo", {user,pass,email})
+
+		    							this.setState({errors:''})
+		    							window.location.href="/account"
+
+    								break
+    								case 'takenUser':
+    							console.log("uwa!")
+
+		    							this.setState({errors:'User or Email not available!'})
+
+    								break
+    							}
     							break;
 
     					}
@@ -152,7 +194,7 @@ export default class AccLogin extends Component{
 				{this.state.inputs[this.state.request]}
 				{this.state.errors}
 				</div>
-		      	<button onClick={() =>{this.handleInput('login')}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
+		      	<button onClick={() =>{this.handleInput('login',$("#password").val(),$("#username").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
 		      	<br/>
 				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val(),$("#email").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
 

@@ -79,7 +79,6 @@ export default class VScrollwheel extends Component{
 		return(
 			<>
 			<h2 class="hero cyberpunk layers " data-text="EGO DEATH"><span>MAIN MENU</span></h2>
-
 		      <img src={this.opts[1][this.state.currOpt]} class = "m-auto mt-16  border-white border p-8 h-[55%]"/>
 
 			<div class="flex flex-row relative top-[5%] justify-center">
