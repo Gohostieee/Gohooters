@@ -44,22 +44,22 @@ export default class Careers extends Component {
 				return(
 					<div class="m-auto border-x-2 h-[60%] mt-12 w-[80%] flex-col flex justify-between mt-16 mb-16">
 					
-					<div class="flex option flex-row justify-center " onClick={()=> this.changeCareer("COLLEGE PROFESSOR")}>
+					<div class="flex  flex-row justify-center option " onClick={()=> this.changeCareer("COLLEGE PROFESSOR")}>
 
-							<p class = "text-white  text-2xl QuickSand mice  careerOpt opt-1" optNum="1" onclick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
+							<p class = "text-white text-2xl QuickSand mice  careerOpt opt-1" optNum="1" onclick={()=> this.changeCareer("COLLEGE PROFESSOR")} id="selected">COLLEGE PROFESSOR </p>
 
 						</div>
-						<div class="flex flex-row justify-center " onClick={()=> this.changeCareer("DATA ENGINEER")}>
-							<p class = "text-white option text-2xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
+						<div class="flex flex-row justify-center option " onClick={()=> this.changeCareer("DATA ENGINEER")}>
+							<p class = "text-white text-2xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
 						</div>
-						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")} >
-							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
+						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")} >
+							<p class = "text-white text-2xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
 						</div>
-						<div class="flex flex-row justify-center "onClick={()=> this.changeCareer("API ENGINEER")}>
-							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
+						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("API ENGINEER")}>
+							<p class = "text-white text-2xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
 						</div>
-						<div class="flex flex-row justify-center " onClick={()=>{window.location.href="/mainmenu"}}>
-							<p class = "text-white option text-2xl QuickSand careerOpt " optNum="4">  BACK  </p>
+						<div class="flex flex-row justify-center option " onClick={()=>{window.location.href="/mainmenu"}}>
+							<p class = "text-white text-2xl QuickSand careerOpt " optNum="4">  BACK  </p>
 						</div>
 					<Selector/>
 

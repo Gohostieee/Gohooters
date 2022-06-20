@@ -51,7 +51,7 @@ export default class Chatbubble extends Component {
 		return (
 			<>
 			<div class="flex-col flex items-center z-50">
-				<p class="text-white text-justify bg-black w-[40%] min-w-[390px] text-4xl ml-[8vh] mr-[8vh] p-8 border  QuickSand">{this.state.currText+"\u00A0 \u00A0".repeat((this.state.Text[this.state.currBubble].length-this.state.currText.length)/2)}</p>
+				<p class="text-white text-justify bg-black w-[60%] min-w-[390px] text-2xl ml-[8vh] mr-[8vh] p-8 border  QuickSand">{this.state.currText+"\u00A0 \u00A0".repeat((this.state.Text[this.state.currBubble].length-this.state.currText.length)/2)}</p>
 				<div class = "flex-row flex">
 					<button id="skip" class="btn m-5 option btn-outline btn-primary glitch text-2xl font-thin layers">SKIP</button>
 					<button onClick={()=>{this.goBack(this)}} class="btn m-5 option btn-outline btn-primary glitch bg-black text-2xl font-thin layers">BACK</button>

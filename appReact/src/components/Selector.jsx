@@ -8,19 +8,16 @@ export default class Selector extends Component{
 
         constructor(props){
             super(props) 
-            this.arrow='<p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>'
+            this.arrow='<p class = "text-white text-4xl relative bottom-[5px] QuickSand mr-4 gyro " id="arrow">➤</p>'
         }
         componentDidMount(){
             const arrow = this.arrow //jquery messing with the THIS keyword, going to look for a solution later
             console.log("what")
             let optList = {"currOpt":0,"optArr":[]}
             $(".option").each(function (){
-                if($(this).prop("tagName")=="BUTTON"){
-                    optList['optArr'].push(this)
-                }else{
+                                
+                    optList['optArr'].push($(this))
                 
-                    optList['optArr'].push($(this).parent())
-                }
                 $(this).hover(function(){
                     $("#arrow").remove()
                     $(this).prepend(arrow)
@@ -96,7 +93,7 @@ $(document).keydown(function(e){
 
             return(
                 <div>
-                        <p class = "text-white text-4xl QuickSand mr-4 gyro " id="arrow">➤</p>
+                        <p class = "text-white text-4xl mb-4 QuickSand mr-4 gyro " id="arrow">➤</p>
 
                 </div>
                 )

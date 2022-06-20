@@ -5,14 +5,14 @@ import cors from 'cors'
 import mysql from 'mysql'
 import 'dotenv/config'
 import {createAcc,login} from './mySQLFuncs/genFuncs.js'
-/*
+
 console.log({
 	host: process.env.host,
   user: 'root',
   password: process.env.password,
   database: process.env.database,
 })
-*/
+
 const con = mysql.createConnection({  
   host: process.env.host,
   user: 'root',
