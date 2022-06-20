@@ -5,6 +5,8 @@ import About from './pages/about.jsx'
 import MainMenu from './pages/mainmenu.jsx'
 import Login from './pages/login.jsx'
 import Account from './pages/account.jsx'
+import Welcome from './pages/Welcome.jsx'
+import Services from './pages/services.jsx'
 import "./styles/mice.css"
 import Selector from "./components/Selector.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -20,6 +22,8 @@ function App() {
         <Route path="mainmenu" element={<MainMenu/>} />
         <Route path="login" element={<Login/>} />
         <Route path="Account" element={<Account/>} />
+        <Route path="Welcome" element={<Welcome/>} />
+        <Route path="services" element={<Services/>} />
       </Routes>
       </BrowserRouter>
     </div>

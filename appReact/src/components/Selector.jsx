@@ -21,6 +21,10 @@ export default class Selector extends Component{
                 
                     optList['optArr'].push($(this).parent())
                 }
+                $(this).hover(function(){
+                    $("#arrow").remove()
+                    $(this).prepend(arrow)
+                })
             })
             console.log(optList['optArr'])
             $(optList['optArr'][optList['currOpt']]).prepend($("#arrow"))
@@ -55,7 +59,6 @@ $(document).keydown(function(e){
 
                 }
                 $("#arrow").remove()
-                console.log(arrow,"hop out")
                 $(optList['optArr'][optList['currOpt']]).prepend(arrow)
 
                 

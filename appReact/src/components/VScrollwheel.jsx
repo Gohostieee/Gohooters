@@ -58,9 +58,10 @@ export default class VScrollwheel extends Component{
                 	$("#selectr").trigger("click")
 	            	break;
 	            case 37:    // key left, right, up, and down
-	            	prop.switchUp(1)
-	            case 39:    // key right
 	            	prop.switchUp(2)
+	            	break;
+	            case 39:    // key right
+	            	prop.switchUp(1)
 					
 	                break;
 	            }
@@ -83,7 +84,7 @@ export default class VScrollwheel extends Component{
 
 			<div class="flex flex-row relative top-[5%] justify-center">
 
-<button onClick = {()=> {console.log("glizzy",this); this.switchUp(1)}} class="btn option btn-outline btn-primary glitch h-[50%] w-[70px] mr-4 text-center text-2xl font-thin layers " data-text="LEFT">⇐</button>
+<button onClick = {()=> {console.log("glizzy",this); this.switchUp(2)}} class="btn option btn-outline btn-primary glitch h-[50%] w-[70px] mr-4 text-center text-2xl font-thin layers " data-text="LEFT">⇐</button>
 <div class=" flex flex-row relative text-center overflow-hidden justify-center min-w-[150px]  w-[10%] border-x">
 					{this.opts[0][this.state.currOpt]}
 
