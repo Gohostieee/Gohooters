@@ -10,7 +10,7 @@ export default function(){
 
 	return( 
 		<>
-			<div class="overflow-hidden h-screen w-screen bg-black relative flex flex-col items-center" data-theme="cyberpunk">
+			<div class="overflow-y-visible h-screen w-screen bg-black relative flex flex-col items-center" data-theme="cyberpunk">
 
 			<img src={Lain} class=" h-[40%] mt-16 mb-8 relative p-16 border-x" />
 			

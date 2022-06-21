@@ -8,7 +8,7 @@ export default class Selector extends Component{
 
         constructor(props){
             super(props) 
-            this.arrow='<p class = "text-white text-4xl relative bottom-[5px] QuickSand mr-4 gyro " id="arrow">➤</p>'
+            this.arrow='<p class = "text-white text-4xl relative bottom-[5px] QuickSand mr-4 gyro md:inline-flex hidden" id="arrow">➤</p>'
         }
         componentDidMount(){
             const arrow = this.arrow //jquery messing with the THIS keyword, going to look for a solution later
@@ -92,8 +92,8 @@ $(document).keydown(function(e){
 
 
             return(
-                <div>
-                        <p class = "text-white text-4xl mb-4 QuickSand mr-4 gyro " id="arrow">➤</p>
+                <div class>
+                        <p class = "text-white text-4xl mb-4 QuickSand mr-4 gyro md:inline-flex hidden" id="arrow">➤</p>
 
                 </div>
                 )

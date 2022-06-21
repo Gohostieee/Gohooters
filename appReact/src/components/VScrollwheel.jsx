@@ -72,20 +72,24 @@ export default class VScrollwheel extends Component{
 	createOpt(opt){
 		/*NOTES ON <A> VS <LINK> FOR SOME REASON LINK MESSES UP AND RUNS US BACK A PAGE 
 		AKA: WHEN WE TRY TO GO SOMEWHERE, WE GO TO THAT PAGE THEN GO BACK TO OUR STARTING
-		POSITION, DOING ESSENTIALLY NOTHING BUT REFRESHING THE PAGE, WILL LOOK MORE INTO THIS LATER*/
-		return (<a href={opt[1]}><p id = "selectr" href="/" class  = "text-white btn-primary btn-outline btn h-[50%] text-xl   glitch border-b font-medium">{opt[0]}</p></a>)
+		POSITION, DOING ESSENTIALLY NOTHING BUT REFRESHING THE PAGE, WILL LOOK MORE INTO THIS LATER
+
+
+		future me note: I still haven't:x
+		*/
+		return (<a href={opt[1]}><p id = "selectr" href="/" class  = "text-white btn-primary btn-outline btn text-l   glitch border-b font-medium">{opt[0]}</p></a>)
 	}
 
 	render(){
 		return(
 			<>
-			<h2 class="hero cyberpunk layers " data-text="EGO DEATH"><span>MAIN MENU</span></h2>
-		      <img src={this.opts[1][this.state.currOpt]} class = "m-auto mt-16  border-white border p-8 h-[55%]"/>
+			<h2 class="hero cyberpunk layers mt-12 " data-text="EGO DEATH"><span>MAIN MENU</span></h2>
+		      <img src={this.opts[1][this.state.currOpt]} class = "m-auto sm:mt-16 mt-6 border-white border p-8 h-[55%]"/>
 
-			<div class="flex flex-row relative top-[5%] justify-center">
+			<div class="flex flex-row relative sm:mt-16 mt-8 justify-center">
 
 <button onClick = {()=> {console.log("glizzy",this); this.switchUp(2)}} class="btn option btn-outline btn-primary glitch h-[50%] w-[70px] mr-4 text-center text-2xl font-thin layers " data-text="LEFT">⇐</button>
-<div class=" flex flex-row relative text-center overflow-hidden justify-center min-w-[150px]  w-[10%] border-x">
+<div class=" flex flex-row relative text-center overflow-hidden justify-center min-w-[190px]  w-[15%] border-x">
 					{this.opts[0][this.state.currOpt]}
 
 

@@ -51,11 +51,11 @@ export default class Chatbubble extends Component {
 		return (
 			<>
 			<div class="flex-col flex items-center z-50">
-				<p class="text-white text-justify bg-black w-[60%] min-w-[390px] text-2xl ml-[8vh] mr-[8vh] p-8 border  QuickSand">{this.state.currText+"\u00A0 \u00A0".repeat((this.state.Text[this.state.currBubble].length-this.state.currText.length)/2)}</p>
+				<p class="text-white text-justify bg-black sm:w-[60%] w-[90%] sm:min-w-[390px] text-base sm:text-2xl ml-[8vh] mr-[8vh] sm:p-8 p-4 border  QuickSand">{this.state.currText+"\u00A0 \u00A0".repeat((this.state.Text[this.state.currBubble].length-this.state.currText.length)/2)}</p>
 				<div class = "flex-row flex">
-					<button id="skip" class="btn m-5 option btn-outline btn-primary glitch text-2xl font-thin layers">SKIP</button>
-					<button onClick={()=>{this.goBack(this)}} class="btn m-5 option btn-outline btn-primary glitch bg-black text-2xl font-thin layers">BACK</button>
-					<button id="continue" onClick={()=>{this.goNext(this)}} class="btn m-5 option btn-outline btn-primary glitch bg-black text-2xl font-thin layers">CONTINUE</button>
+					<button id="skip" class="btn sm:m-5 mt-5 ml-1 mr-1 option btn-outline btn-primary glitch text-sm sm:text-2xl font-thin layers">SKIP</button>
+					<button onClick={()=>{this.goBack(this)}} class="btn sm:m-5 mt-5 ml-1 mr-1 option btn-outline btn-primary glitch bg-black sm:text-2xl text-sm font-thin layers">BACK</button>
+					<button id="continue" onClick={()=>{this.goNext(this)}} class="btn sm:m-5 mt-5 ml-1 mr-1 option btn-outline btn-primary glitch bg-black sm:text-2xl text-sm font-thin layers">CONTINUE</button>
 					<Selector/>
 				</div>
 			</div>

@@ -69,7 +69,7 @@ export default class AccLogin extends Component{
     	switch(e.data['status']){
     		case "approved":
     			console.log('approved')
-    			localStorage.setItem("userInfo", {user,pass,email})
+    			localStorage.setItem("username", user)
 
 		    	this.setState({errors:''})
 		    	window.location.href="/account"
