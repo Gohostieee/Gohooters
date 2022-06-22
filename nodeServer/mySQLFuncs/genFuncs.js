@@ -60,6 +60,27 @@ async function accValCheck(y,con,creds){
 	});
 
 
+<<<<<<< Updated upstream
+=======
+}
+
+function handler(response,con,req,callback){
+
+	accValCheck(response,con,[hash256(req.query['username']),req.query['email']], function(result){
+		switch(result){
+				case 2:
+					response[3] = {"error-code":400,reason:"takenUser"}
+
+				break;
+
+				case 1: 
+
+					console.log("hm?")
+ 
+				break;
+
+				case 0:
+>>>>>>> Stashed changes
 
 }
 

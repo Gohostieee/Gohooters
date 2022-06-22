@@ -13,20 +13,20 @@ const Contacts = () =>{
 				
 				<div class="m-auto border-x-2 mt-12 w-[90%] flex-col flex justify-evenly mt-4 mb-12 overflow-y-visible">
 					
-					<div class="flex flex-row justify-center sm:mb-24 mt-12 option ">
-		 				<a href="https://github.com/Gohostieee" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-3xl QuickSand mice  careerOpt opt-1">GITHUB: https://github.com/Gohostieee</p></a>
+					<div class="flex flex-row justify-center sm:mb-12 lg:mb-16 mt-12 option ">
+		 				<a href="https://github.com/Gohostieee" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-2xl QuickSand mice  careerOpt opt-1">GITHUB: https://github.com/Gohostieee</p></a>
 		 			</div>
-		 			<div class="flex flex-row justify-center sm:mb-24 mt-12 option ">
-		 				<p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-3xl QuickSand mice  careerOpt opt-1">Email: joshua32eb@gmail.com</p>
+		 			<div class="flex flex-row justify-center sm:mb-12 lg:mb-16 mt-12 option ">
+		 				<p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-2xl QuickSand mice  careerOpt opt-1">Email: joshua32eb@gmail.com</p>
 		 			</div>
-		 			<div class="flex flex-row justify-center sm:mb-24 mt-12 option ">
-		 				<a href="https://www.linkedin.com/in/joshua-rodriguez-48b8aa22b/" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-3xl QuickSand mice  careerOpt opt-1">LinkedIn: https://www.linkedin.com/in/joshua-rodriguez-48b8aa22b/</p></a>
+		 			<div class="flex flex-row justify-center sm:mb-12 lg:mb-16 mt-12 option ">
+		 				<a href="https://www.linkedin.com/in/joshua-rodriguez-48b8aa22b/" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-2xl QuickSand mice  careerOpt opt-1">LinkedIn: https://www.linkedin.com/in/joshua-rodriguez-48b8aa22b/</p></a>
 		 			</div>
-		 			<div class="flex flex-row justify-center sm:mb-24 mt-12 option ">
-		 				<a href="https://discord.com/" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-3xl QuickSand mice  careerOpt opt-1">Discord: Gohost#4055</p></a>
+		 			<div class="flex flex-row justify-center sm:mb-12 lg:mb-16 mt-12 option ">
+		 				<a href="https://discord.com/" target="_blank"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-2xl QuickSand mice  careerOpt opt-1">Discord: Gohost#4055</p></a>
 		 			</div>
-		 			<div class="flex flex-row justify-center sm:mb-24 mt-12 option ">
-		 				<Link to="/mainmenu"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-3xl QuickSand mice  careerOpt opt-1">BACK</p></Link>
+		 			<div class="flex flex-row justify-center sm:mb-12 lg:mb-16 mt-12 option ">
+		 				<Link to="/mainmenu"><p onClick={()=>{}}class="text-white md:text-xl underline underline-offset-4 text-lg lg:text-2xl QuickSand mice  careerOpt opt-1">BACK</p></Link>
 		 			</div>
 					<Selector/>
 

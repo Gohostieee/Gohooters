@@ -83,12 +83,12 @@ export default class VScrollwheel extends Component{
 	render(){
 		return(
 			<>
-			<h2 class="hero cyberpunk layers mt-12 " data-text="EGO DEATH"><span>MAIN MENU</span></h2>
+			<h2 class="hero cyberpunk layers  mt-4" data-text="EGO DEATH"><span>MAIN MENU</span></h2>
 		     <p class = "text-white text-xl glitch mt-2 underline underline-offset-4 font-medium"> 卡罗琳</p>
 				<p class = "text-white text-xl glitch underline underline-offset-4 font-medium">执子之手，与子偕老</p>
 				 <img src={this.opts[1][this.state.currOpt]} class = "m-auto sm:mt-12 mt-4 border-white border p-8 sm:h-[55%]"/>
 
-			<div class="flex flex-row relative sm:mt-16 mt-8 justify-center">
+			<div class="flex flex-row relative sm:mt-12 mt-8 justify-center">
 
 <button onClick = {()=> {console.log("glizzy",this); this.switchUp(2)}} class="btn option btn-outline btn-primary glitch h-[50%] w-[70px] mr-4 text-center text-2xl font-thin layers " data-text="LEFT">⇐</button>
 <div class=" flex flex-row relative text-center overflow-hidden justify-center min-w-[180px]  w-[15%] border-x">

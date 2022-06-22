@@ -10,6 +10,7 @@ import Services from './pages/services.jsx'
 import Contacts from './pages/contacts.jsx'
 import "./styles/mice.css"
 import Selector from "./components/Selector.jsx"
+import Resume from "./pages/resume.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="Welcome" element={<Welcome/>} />
         <Route path="services" element={<Services/>} />
         <Route path="contacts" element={<Contacts/>} />
+        <Route path="resume" element={<Resume/>} />
       </Routes>
       </BrowserRouter>
     </div>
