@@ -3,7 +3,7 @@ import sha256 from 'crypto-js/sha256.js';
 import $ from "jquery"
 import axios from "axios"
 import "../styles/quicksand.css"
-
+import {Link} from "react-router-dom"
 const api = axios.create({baseURL:"http://localhost:3001/api/accounts"})
 export default class AccLogin extends Component{
 
@@ -30,11 +30,11 @@ export default class AccLogin extends Component{
 	}
 	createInput(x){
 		return (
-					<div class="form-control w-[80%] max-w-xs text-white m-auto">
+					<div class="form-control w-[80%]  max-w-xs text-white m-auto">
 					  <label class="label">
 					    <span class="label-text text-white">{x[0]}</span>
 					  </label>
-					  <input type="text" placeholder="Type here" id = {x[1]}class="input mb-8 input-bordered w-full max-w-xs bg-transparent border-white rounded-l " />
+					  <input type="text" placeholder="ACCOUNTS CURRENTLY DISABLED!!" readonly="true" id = {x[1]}class="input mb-8 input-bordered w-full max-w-xs bg-transparent border-white rounded-l " />
 					</div>
 			)
 	}
@@ -189,14 +189,18 @@ export default class AccLogin extends Component{
 
 		return(
 				<>
-				<div class="border-x mt-8 flex flex-col justify-c  w-[30%] m-auto mt-24 min-w-[350px]">
+				<div class="border-x  flex flex-col justify-c w-[30%] m-auto sm:mt-12 mt-8 min-w-[350px]">
 					
 				{this.state.inputs[this.state.request]}
 				{this.state.errors}
 				</div>
-		      	<button onClick={() =>{this.handleInput('login',$("#password").val(),$("#username").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
+				<p class="text-white text-justify bg-black sm:w-[80%] lg:min-w-[700px] lg:w-[40%] w-[90%]  text-base sm:text-2xl mt-8 sm:p-8 p-4 border m-auto QuickSand"> Note, I am currently not hosting the api to interface with my account DB soooo, there is no point in trying to login</p>
+		      	
+		      	<button onClick={() =>{this.handleInput('login',$("#password").val(),$("#username").val())}} class="btn option btn-outline w-[330px] btn-primary glitch text-base sm:text-xl font-thin layers mt-8 " id="loginButton" data-text="WELCOME BACK">LOGIN</button>
 		      	<br/>
-				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val(),$("#email").val())}} class="btn option btn-outline w-[25%] min-w-[330px] btn-primary glitch text-xl font-thin layers mt-16 " id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
+				<button onClick={() =>{this.handleInput('signup',$("#password").val(),$("#username").val(),$("#email").val())}} class="btn option btn-outline w-[330px] btn-primary glitch text-base sm:text-xl font-thin layers sm:mt-16 mt-4" id="signupButton" data-text="DO YOU WISH TO PROCEED.">CREATE ACCOUNT</button>
+				<br/>
+				<Link to="/mainmenu"><button class="btn option btn-outline w-[330px] btn-primary glitch text-base sm:text-xl font-thin layers sm:mt-16 mt-4 " id="signupButton" data-text="TBH IDK WHAT TO PUT">BACK</button></Link>
 
 		      	</>
 			)

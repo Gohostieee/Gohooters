@@ -7,7 +7,7 @@ export default function Home(){
 					console.log("whaft")
 
 	return (
-			<div class=	"absolute overflow-hidden h-screen w-screen  bg-black" data-theme="cyberpunk">
+			<div class=	"absolute overflow-y-visible h-screen w-screen  bg-black" data-theme="cyberpunk">
 
 				<div id="wrap ">
 					<h2 class="hero cyberpunk layers mt-12" data-text="Gohooters"><span>Gohooters</span></h2>

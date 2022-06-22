@@ -7,6 +7,7 @@ import Login from './pages/login.jsx'
 import Account from './pages/account.jsx'
 import Welcome from './pages/Welcome.jsx'
 import Services from './pages/services.jsx'
+import Contacts from './pages/contacts.jsx'
 import "./styles/mice.css"
 import Selector from "./components/Selector.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
         <Route path="Account" element={<Account/>} />
         <Route path="Welcome" element={<Welcome/>} />
         <Route path="services" element={<Services/>} />
+        <Route path="contacts" element={<Contacts/>} />
       </Routes>
       </BrowserRouter>
     </div>
