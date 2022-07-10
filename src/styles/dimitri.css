@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "dimitri";
+    src: url("./fonts/DIMITRI_.TTF");
+}
+
+.Dimitri {
+    font-family: "dimitri";
+}
