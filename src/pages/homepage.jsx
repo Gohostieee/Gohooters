@@ -4,7 +4,8 @@ import "../styles/dimitri.css"
 import { Link } from "react-router-dom";
 import LainComp from "../images/171273.gif"
 export default function Home(){
-					console.log("whaft")
+	if(localStorage.getItem('visited')==='true'){window.location.href='/mainmenu'}
+					
 
 	return (
 			<div class=	"absolute overflow-y-visible h-screen w-screen  bg-black" data-theme="cyberpunk">

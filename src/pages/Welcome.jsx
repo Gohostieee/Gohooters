@@ -5,7 +5,7 @@ import Chatbubble from "../components/Chatbubble.jsx"
 export default function(){
 
 
-
+	if(localStorage.getItem('visited')==='true'){window.location.href='/mainmenu'}
 
 
 	return( 
@@ -14,7 +14,7 @@ export default function(){
 
 			<img src={Lain} class=" lg:h-[40%] mt-16 mb-8 relative p-16 border-x" />
 			
-			<Chatbubble function = {()=>{window.location.href="/loginc"}}text="
+			<Chatbubble function = {()=>{localStorage.setItem('visited','true');window.location.href="/login"}}text="
 
 			Hey there! Welcome to my flat, this place is what I like to call Gohost's (aka me) school of thought, this is essentially a place for
 			anyone to learn about any skills they might be interesting in, devoid of any judgement and worthless degrading metrics.

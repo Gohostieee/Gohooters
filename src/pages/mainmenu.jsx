@@ -14,7 +14,7 @@ import shoulderLain from "../images/shoulderHand.gif"
 //829-796-1496
 export default function MainMenu(){
 
-
+	if(JSON.parse(localStorage.getItem('user'))==null){window.location.href='/login'}
 
 
 
