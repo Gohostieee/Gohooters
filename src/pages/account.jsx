@@ -1,15 +1,11 @@
+import { initializeApp } from "firebase/app";
 import {Component} from 'react'
+import { getStorage, ref } from "firebase/storage";
 
+const Account =() =>{
 
-
-export default class Account extends Component{
-	constructor(){
-		super()
-	}
-	componentDidMount(){
-		console.log(localStorage)
-	} 
-	render(){
+	const storage = getStorage() 
+	
 
 		return(
 			<div class="overflow-hidden h-screen w-screen bg-black relative " data-theme="cyberpunk">
@@ -33,5 +29,7 @@ export default class Account extends Component{
 
 
 			)
-	}
+	
 }
+
+export default Account;

@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import "./styles/mice.css"
-import {Home, About, MainMenu,Login,Account,Welcome,Services,Contacts,Resume} from "./pages/pageindex.jsx"
+import {Home, About, MainMenu,Login,Account,Welcome,Services,Contacts,Resume,PersonalMenu} from "./pages/pageindex.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -15,8 +15,9 @@ function App() {
         <Route path="/" element={<><Home /></>} />
         <Route path="About" element={<About/>} />
         <Route path="mainmenu" element={<MainMenu/>} />
+        <Route path="aboutmenu" element={<PersonalMenu/>} />
         <Route path="login" element={<Login/>} />
-        <Route path="Account" element={<Account/>} />
+        <Route path="myaccount" element={<Account/>} />
         <Route path="Welcome" element={<Welcome/>} />
         <Route path="services" element={<Services/>} />
         <Route path="contacts" element={<Contacts/>} />

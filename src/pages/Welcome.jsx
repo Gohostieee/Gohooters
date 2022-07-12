@@ -5,7 +5,6 @@ import Chatbubble from "../components/Chatbubble.jsx"
 export default function(){
 
 
-	if(localStorage.getItem('visited')==='true'){window.location.href='/mainmenu'}
 
 
 	return( 

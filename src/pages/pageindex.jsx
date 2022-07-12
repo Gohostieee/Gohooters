@@ -7,8 +7,9 @@ import Welcome from './Welcome.jsx'
 import Services from './services.jsx'
 import Contacts from './contacts.jsx'
 import Resume from "./resume.jsx"
+import PersonalMenu from "./personal.jsx"
 
 
 
 
-export {Home, About, MainMenu,Login,Account,Welcome,Services,Contacts,Resume}
+export {Home, About, MainMenu,Login,Account,Welcome,Services,Contacts,Resume,PersonalMenu}

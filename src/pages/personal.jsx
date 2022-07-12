@@ -12,16 +12,16 @@ import shoulderLain from "../images/shoulderHand.gif"
 
 
 //829-796-1496
-export default function MainMenu(){
+export default function PersonalMenu(){
 
 	if(JSON.parse(localStorage.getItem('user'))==null){window.location.href='/login'}
 
-
+	
 
 	return(
 		<>
 			<div class=	"absolute h-screen w-screen  bg-black" data-theme="cyberpunk">
-				<Swheel options={[['Comissions','/comissions',vanish],["MY ACCOUNT","/myaccount",vanishLain],["ABOUT ME","/aboutmenu",Lain]]}/>
+				<Swheel options={[['ABOUT','/welcome',vanish],["SERVICES","/services",lainRoom],['CAREER','/about',computers],["RESUME","/resume",smallLain],["CONTACTS","/contacts",shoulderLain],["ACCOUNTS","/login",vanishLain],["BACK","/",Lain]]}/>
 
 
 			</div>

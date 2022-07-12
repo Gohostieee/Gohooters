@@ -1,5 +1,6 @@
 import AccLogin from "../components/accLogin.jsx"
 export default function Login(){
+	if(JSON.parse(localStorage.getItem('user'))!=null){window.location.href='/mainmenu'}
 
 	return(
 		<div class="absolute overflow-x-hidden h-screen w-screen bg-black relative " data-theme="cyberpunk">
