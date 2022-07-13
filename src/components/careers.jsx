@@ -109,7 +109,8 @@ export default class Careers extends Component {
 
 	}
 
-	componentDidMount(){// WHY IS USEEFFECT RUNNING TWICE??? IT WORKED FINE BEFORE??? LIKE HUH????
+
+	componentDidMount(){// WHY IS USEEFFECT RUNNING TWICE??? IT WORKED FINE BEFORE??? LIKE HUH???? Me from the future talking here, yea I still don't know what that was, state management and auto rerenders be like
 		
 			
 	}

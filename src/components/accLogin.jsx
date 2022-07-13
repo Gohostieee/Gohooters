@@ -1,9 +1,10 @@
 import {Component} from "react"
 import sha256 from 'crypto-js/sha256.js';
 import $ from "jquery"
-import axios from "axios"
 import "../styles/quicksand.css"
 import {Link} from "react-router-dom"
+import axios from "axios"
+
 const api = axios.create({baseURL:"http://localhost:3001/api/accounts"})
 export default class AccLogin extends Component{
 
