@@ -1,13 +1,13 @@
 import { initializeApp } from "firebase/app";
-import {useEffect,useState} from 'react'
+import {useEffect,useState,useRef} from 'react'
 import {Link} from "react-router-dom"
 import axios from "axios"
 
 const api = axios.create({baseURL:"http://localhost:3005/users/pfp"})
 const Account =() =>{
 		const userInfo = JSON.parse(localStorage.getItem('user'))
-		const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0);
-
+		const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false');
+		const text = useRef()
 		let imgUrl;
 		async function GetImage(){
 				await api.get(`/?user=${userInfo['user']}`).then(url=>{
@@ -20,8 +20,9 @@ const Account =() =>{
 			}
 		useEffect(() => {
 			 
+			text.current.innerHTML = userInfo['about']
 			GetImage();
-			
+
 
 		},[])
 		console.log(imgSrc,'alot')
@@ -52,8 +53,14 @@ const Account =() =>{
 					<p className  = "text-white md:text-lg sm:text-base  QuickSand mt-16 sm:mb-0 font-thin m-auto" >email: {userInfo['email']}</p>
 
 					</div>
+					<div className = "flex flex-col m-auto">
 					<p class = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-16 font-thin">About me</p>
-					<p class="text-white lg:text-xl text-l md:w-[80%] lg:w-[50%]  w-[90%] m-auto lg:p-8 text-justify  lg:border border-x p-4 pt-0 mt-12  QuickSand">{userInfo['about']}</p>
+					{edit === 'true'
+					?<p onClick={function ChangeEdit(){userInfo['about']=text.current.innerHTML;localStorage.setItem('user',JSON.stringify(userInfo));console.log(text.current.innerHTML);useEdit('false');}}className = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Save🖉</p>
+					:<p onClick={function ChangeEdit(){useEdit('true')}}className = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Edit🖉</p>}
+					
+					</div>
+					<p ref = {text} contentEditable = {edit} class="text-white lg:text-xl text-l md:w-[80%] lg:w-[50%] w-[90%] m-auto lg:p-8 text-justify  lg:border border-x p-4 pt-0 mt-12  QuickSand"></p>
 					<Link to="/mainmenu"><button class="btn option btn-outline glitch w-[120px] mt-8 text-center text-2xl font-thin layers " data-text="BACK">BACK</button></Link>
 							
 				</div>
