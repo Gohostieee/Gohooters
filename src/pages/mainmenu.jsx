@@ -17,11 +17,11 @@ export default function MainMenu(){
 	if(JSON.parse(localStorage.getItem('user'))==null){window.location.href='/login'}
 
 
-
+	//['Comissions','/comissions',vanish]
 	return(
 		<>
 			<div class=	"absolute h-screen w-screen  bg-black" data-theme="cyberpunk">
-				<Swheel options={[['Comissions','/comissions',vanish],["MY ACCOUNT","/myaccount",vanishLain],["ABOUT ME","/aboutmenu",Lain]]}/>
+				<Swheel options={[['Chat!','/chatmenu',vanish],["MY ACCOUNT","/myaccount",vanishLain],["ABOUT ME","/aboutmenu",Lain]]}/>
 
 
 			</div>
