@@ -3,8 +3,10 @@ import {useEffect,useState,useRef} from 'react'
 import {Link} from "react-router-dom"
 import axios from "axios"
 import Err from "../components/minimalError.jsx"
+import UserFolders from "../components/userFolders.jsx"
 const api = axios.create({baseURL:"http://localhost:3005/users/pfp"})
 const mySqlApi = axios.create({baseURL:"http://localhost:3001"})
+
 const Account =() =>{
 		const userInfo = JSON.parse(localStorage.getItem('user'))
 		const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false'),[refresh,useRefresh]=useState();
@@ -99,10 +101,11 @@ const Account =() =>{
 					:<p onClick={function ChangeEdit(){useEdit('true')}}className = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Edit🖉</p>}
 					
 					</div>
-					<p ref = {text} contentEditable = {edit} class="text-white lg:text-xl text-l md:w-[80%] lg:w-[50%] w-[90%] m-auto lg:p-8 text-justify  lg:border border-x p-4 pt-0 mt-12  QuickSand"></p>
+					<p ref = {text} contentEditable = {edit} class="text-white lg:text-xl md:w-[80%] lg:w-[50%] w-[90%] m-auto lg:p-8 text-justify  lg:border border-x p-4 pt-0 mt-12  QuickSand"></p>
+					<UserFolders userInfo={userInfo} api={mySqlApi}/>
 					<div><Link to="/mainmenu"><button class="btn option btn-outline glitch w-[120px] mt-8 text-center text-2xl font-thin layers " data-text="BACK">BACK</button></Link></div>
-							
 				</div>
+
 			</div>
 
 

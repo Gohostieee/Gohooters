@@ -2,6 +2,9 @@
   text-align: center;
   
 }
+input:focus {
+    outline-width: 0;
+}
 .pixel {
   image-rendering: pixelated !important;
   image-rendering: -moz-crisp-edges !important;
