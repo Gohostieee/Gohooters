@@ -62,13 +62,13 @@ export default class AccLogin extends Component{
 		switch(x){
 			case "login":
 			console.log("what")
-				await api.get(`/?request=login&password=${pass}&username=${user}`, {
+				await api.get(`/login/?password=${pass}&username=${user}`, {
 					crossorigin:true,
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
     },).then((e)=>{
     	console.log(e.data)
-    	switch(e.data[1]['reason']){
+    	switch(e.data){
     		
     		case 'userNotFound':
 				this.setState({errors:this.createError("Username not found!")})
@@ -78,6 +78,12 @@ export default class AccLogin extends Component{
 
 
     		break;
+    		case false:
+
+				this.setState({errors:this.createError("Error validating credentials!")})
+
+
+    		break
     		default:
 				this.setState({errors:""})
 
@@ -94,7 +100,7 @@ export default class AccLogin extends Component{
 
 			case 'signup':
 				//yes this should be a post, can't be bothered to change it now, harmless albeit slightly confusing mistake
-				await api.get(`/?request=signup&password=${pass}&username=${user}&email=${email}`, {
+				await api.get(`/signup/?&password=${pass}&username=${user}&email=${email}`, {
 					crossorigin:true,
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
@@ -177,8 +183,8 @@ export default class AccLogin extends Component{
     		break
     	}
     	*/
-    	console.log(e.data[1]['reason'],'uwu')
-    	switch(e.data[1]['reason']){
+    	console.log(e.data)
+    	switch(e.data){
 
     		case 'userTaken':
     			this.setState({errors:this.createError('Username is taken!')})
@@ -197,6 +203,11 @@ export default class AccLogin extends Component{
     		break;
     		case 'invalidEmail':
 				this.setState({errors:this.createError("Email isn't valid!")})
+
+    		break;
+    		case false:
+
+				this.setState({errors:this.createError("Error validating credentials!")})
 
     		break;
     		default:
