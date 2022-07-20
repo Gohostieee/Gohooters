@@ -9,7 +9,7 @@ const mySqlApi = axios.create({baseURL:"http://localhost:3001"})
 
 const Account =() =>{
 		const userInfo = JSON.parse(localStorage.getItem('user'))
-		const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false'),[refresh,useRefresh]=useState();
+		const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false'),[refresh,useRefresh]=useState(0);
 		const text = useRef(), error = useRef(null);
 		let imgUrl;
 		async function GetImage(){
@@ -52,7 +52,6 @@ const Account =() =>{
 				await mySqlApi.get(`/user/getInfo/Master?user=${userInfo['user']}&pass=${userInfo['pass']}`).then(response=>{
 					if(response)
 					{
-						userInfo['user']=response.data['name']
 						userInfo['about']=response.data['about']
 						userInfo['email']=response.data['email']
 						console.log(response.data)
@@ -60,7 +59,7 @@ const Account =() =>{
 
 						localStorage.setItem('user',JSON.stringify(userInfo))}
 				})
-				useRefresh()
+				useRefresh(refresh+1)
 
 		}
 		const multiplyChar=(char,times)=>{
