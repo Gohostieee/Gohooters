@@ -16,7 +16,7 @@ function App() {
         case "login":
             return <Login state = {usePage}/>
         case "myprofile":
-            return <Profile/>
+            return <Profile state = {usePage}/>
 
     }
 }

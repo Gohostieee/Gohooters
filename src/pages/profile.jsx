@@ -5,11 +5,19 @@ import UserFolders from "../components/userFolders.jsx"
 const api = axios.create({baseURL:"http://localhost:3001/users/pfp"})
 const mySqlApi = axios.create({baseURL:"http://localhost:3001"})
 
-const Account =() =>{
+const buildFileSelector= (func) => {
+    const fileSelector = document.createElement('input');
+    fileSelector.setAttribute('type', 'file');
+    fileSelector.setAttribute("Accept","image/png, image/gif, image/jpeg")
+    fileSelector.setAttribute("onchange",func)
+    return fileSelector;
+}
+const Account =(props) =>{
     const userInfo = JSON.parse(localStorage.getItem('user'))
-    const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false'),[refresh,useRefresh]=useState();
-    const text = useRef(), error = useRef(null);
+    const [imgSrc,useImgSrc] = useState(), [passVisible,usePass]=useState(0),[edit,useEdit]=useState('false'),[refresh,useRefresh]=useState(),[imageEdit,useImageEdit] = useState();
+    const text = useRef(), error = useRef(null), imageRef = useRef(),fileRef = useRef();
     let imgUrl;
+
     async function GetImage(){
         await api.get(`/?user=${userInfo['user']}`).then(url=>{
             imgUrl=url['data'];
@@ -62,6 +70,16 @@ const Account =() =>{
         text.current.innerHTML = userInfo['about']
 
     }
+    const handleFileClick = (e) =>
+    {
+        e.preventDefault();
+        fileRef.current.click();
+    }
+    const FileInputed = async (x) =>{
+        useImgSrc(URL.createObjectURL(x.target.files[0]))
+
+        await mySqlApi.post("/user/pfp",{what:x.target.files[0]},{headers:{"content-type": "multipart/form-data"}})
+    }
     const multiplyChar=(char,times)=>{
         let string = char
         for(let x = 0; x<times;x++){
@@ -72,12 +90,15 @@ const Account =() =>{
     }
     return(
         <div class=" h-screen overflow-y-auto overflow-x-hidden w-screen bg-black relative " data-theme="cyberpunk">
+            <input ref = {fileRef} onChange={FileInputed} className={"hidden"} type={"file"} accept = "image/png, image/gif, image/jpeg"></input>
             <div class="relative mt-8 ">
                 <p class = "text-white text-xl mt-1 glitch underline underline-offset-4 font-medium text-center">卡罗琳</p>
                 <p class = "text-white text-xl mt-2 glitch underline underline-offset-4 font-medium text-center">执子之手，与子偕老</p>
             </div>
             <div class = "flex flex-col mt-8 justify-center relative">
-                <img className = "w-[250px] m-auto mb-2 border p-4" src={imgSrc}/>
+                <p onClick = {handleFileClick} className = "text-white md:text-lg sm:text-base mb-2 text-green-400 underline underline-offset-4 QuickSand font-thin m-auto cursor-pointer select-none" >New Profile Picture</p>
+
+                <img ref = {imageRef} className = "w-[250px] m-auto mb-2 border p-4" src={imgSrc}/>
                 <p onClick = {()=>{UpdateLocalStorage()}} className = "text-white md:text-lg sm:text-base mb-6 text-cyan-400 underline underline-offset-4 QuickSand font-thin m-auto cursor-pointer select-none" >🔁Resync Information🔁</p>
                 <p class = "text-white text-2xl font-thin border-b-2 md:w-[70%] w-[90%] lg:w-[50%] pb-4 m-auto text-center" >Account Details:</p>
                 <div class="flex sm:flex-row flex-col justify-center sm:mt-12 md:w-[70%] w-[90%] lg:w-[50%] m-auto">
@@ -97,11 +118,13 @@ const Account =() =>{
                             <p onClick={function ChangeEdit(){SaveAbout()}}className = "text-white mr-2 text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Save🖉</p>
                             <p onClick={function ChangeEdit(){useEdit("false");text.current.innerHTML=userInfo['about']}}className = "text-white text-xl ml-2 glitch underline underline-offset-4 QuickSand mt-4 font-thin">❌Cancel❌</p>
                         </div>
-                        :<p onClick={function ChangeEdit(){useEdit('true')}}className = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Edit🖉</p>}
+                        :<p onClick={function ChangeEdit(){useEdit('true')}} className = "text-white text-xl glitch underline underline-offset-4 QuickSand mt-4 font-thin">🖉Edit🖉</p>}
 
                 </div>
                 <p ref = {text} contentEditable = {edit} class="text-white lg:text-xl md:w-[80%] lg:w-[50%] w-[90%] m-auto lg:p-8 text-justify  lg:border border-x p-4 pt-0 mt-12  QuickSand"></p>
                 <UserFolders userInfo={userInfo} api={mySqlApi}/>
+                <button onClick={()=>{props.state("main")}} className={"text-white font-thin border text-2xl hover:text-black hover:bg-white hover:scale-110 transition-all p-2 pr-4 pl-4 m-auto mt-4"}>BACK</button>
+
             </div>
 
         </div>

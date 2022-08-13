@@ -9,7 +9,7 @@ const UserFolders = (props) => {
 	const UpdateFolder = async () =>{
 		let folders = [];
 		await props.api.get(`/user/folders/get?owner=${props.userInfo['user']}&parent=${dir}`).then(response=>{
-			if(response == []){
+			if(response === []){
 				return;
 			}
 			folders = response.data;
@@ -44,7 +44,7 @@ const UserFolders = (props) => {
 				currLevel:level,
 				parent:dir
 			}).then(response =>{
-			console.log(response)
+			console.log(response.data,"what")
 			UpdateFolder()
 		})
 
@@ -55,7 +55,7 @@ const UserFolders = (props) => {
 			folderArr = [<div ref = {folderRefArr} onClick={()=>{BackDir()}} className="flex flex-row"> <p className="QuickSand text-base sm:text-lg text-white mr-4">► </p> <p className="QuickSand text-base sm:text-lg text-white underline underline-offset-4"> BACK</p>  </div>]
 		}
 		folder.forEach((x)=>{
-				if(x['level']==level)
+				if(x['level']===level)
 				{
 					console.log(x['level'])
 					folderArr.push(<div ref = {folderRefArr} onClick={()=>{ChangeDir(x['name'],dir)}} className="flex flex-row"> <p className="QuickSand text-base sm:text-lg text-white mr-4">► </p> <p className="QuickSand text-base sm:text-lg text-white underline underline-offset-4"> {x['name']}</p>  </div>)
@@ -76,7 +76,7 @@ const UserFolders = (props) => {
 					<div className = "flex flex-row m-auto">
 
 						<div onClick={function UpdateFolder(){useFolderEdit(false)}}> <button className="btn mr-4 option btn-outline glitch  rounded-none mt-4 text-center text-xl font-thin layers " data-text="BACK">CANCEL</button></div>
-						<div onClick={function UpdateFolder(){createFolder(folderName.current.value)}}> <button className="btn ml-4 option btn-outline glitch  rounded-none mt-4 text-center text-xl font-thin layers " data-text="BACK">SAVE</button></div>
+						<div onClick={function UpdateFolder(){createFolder(folderName.current.value);useFolderEdit(false)}}> <button className="btn ml-4 option btn-outline glitch  rounded-none mt-4 text-center text-xl font-thin layers " data-text="BACK">SAVE</button></div>
 
 
 					</div>
