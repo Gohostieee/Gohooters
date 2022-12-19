@@ -50,16 +50,22 @@ export default class Careers extends Component {
 
 						</div>
 						<div class="flex flex-row justify-center option " onClick={()=> this.changeCareer("DATA ENGINEER")}>
-							<p class = "text-white text-2xl QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt  " optNum="2" onClick={()=> this.changeCareer("DATA ENGINEER")}> DATA ENGINEER  </p>
 						</div>
 						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")} >
-							<p class = "text-white text-2xl QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER  </p>
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER")}>  FULLSTACK DEVELOPER-A  </p>
+						</div>
+						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER-B")} >
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER-B")}>  FULLSTACK DEVELOPER-B  </p>
+						</div>
+						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("FULLSTACK DEVELOPER-C")} >
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt " optNum="3" onClick={()=> this.changeCareer("FULLSTACK DEVELOPER-C")}>  FULLSTACK DEVELOPER-C  </p>
 						</div>
 						<div class="flex flex-row justify-center option "onClick={()=> this.changeCareer("API ENGINEER")}>
-							<p class = "text-white text-2xl QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt " optNum="4" onClick={()=> this.changeCareer("API DEVELOPER")}>  API DEVELOPER  </p>
 						</div>
 						<div class="flex flex-row justify-center option " onClick={()=>{window.location.href="/mainmenu"}}>
-							<p class = "text-white text-2xl QuickSand careerOpt " optNum="4">  BACK  </p>
+							<p class = "text-white text-2xl cursor-pointer QuickSand careerOpt " optNum="4">  BACK  </p>
 						</div>
 					<Selector/>
 
